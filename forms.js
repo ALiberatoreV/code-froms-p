@@ -1,26 +1,32 @@
-let list = "";
-const sectionTag = document.querySelector("section");
-const listI = document.querySelector("#listItem").value;
+let list = [
+    {
+        todo: "wash dishes"
+    }
+];
+const ul = document.querySelector("ul");
+
 
 
 document.querySelector(`form`).addEventListener("submit", function(event) {
     event.preventDefault();
+   
+    let listI = document.querySelector("#listItem2");
+let template;
 
-    list = listI.value;
+    list.push({todo:listI.value});
+    
+    template = list.map(item=>
+        `
+            <li>todo: ${item.todo} </li>
+           
+        `
+        
+        
+    );
+        
+        ul.innerHTML = template;
 
 
-let template = 
-`
-    <h2>list: ${listI} </h2>
-
-`
-
-
-})
-sectionTag.innerHTML = template.map(list);
-// const template = list.map(list => `
-//     <h2>List: ${list} </h2>
-// `);
-
-
-
+    
+    
+});
